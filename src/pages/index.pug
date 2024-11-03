@@ -1,0 +1,21 @@
+extends ../layouts/default.pug
+
+block variables
+	- var title = 'О frontend';
+	- var onHeader = false;
+	-
+		var cardsData = [
+			{'imgSrc': '../images/card.svg', 'title': 'JavaScript', 'text': 'Язык программирования для взаимодействия с сетью интернет и не только'},
+			{'imgSrc': '../images/card.svg', 'title': 'HTML', 'text': 'Язык гипертекствовой разметки для создания каркаса нашего сайта и общения с браузером'},
+			{'imgSrc': '../images/card.svg', 'title': 'CSS', 'text': 'Каскад стилей, чтобы станица стала красочнее и меняла внешний вид как угодно нам'}
+		];
+
+block content
+	include ../components/cards-list/cards-list.pug
+		block items
+			include ../components/card/card.pug
+			if cardsData.length
+				each card in cardsData
+					+card(card.imgSrc, card.title, card.text)
+			else
+				p no content 😒
